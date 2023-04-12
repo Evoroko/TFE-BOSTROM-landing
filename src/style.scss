@@ -1,0 +1,235 @@
+@font-face {
+  font-family: PP Agrandir Variable;
+  src: url(Fonts/PPAgrandir-Variable.ttf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;500;700&display=swap');
+
+:root{
+  --grey-black: #000000; 
+  --grey-1000: #0d0d0d; 
+  --grey-950: #191919; 
+  --grey-900: #252525; 
+  --grey-800: #3d3d3d; 
+  --grey-700: #565656; 
+  --grey-600: #6e6e6e; 
+  --grey-500: #868686; 
+  --grey-400: #9e9e9e; 
+  --grey-300: #b6b6b6; 
+  --grey-200: #cfcfcf; 
+  --grey-100: #e7e7e7; 
+  --c-txt: #ffffff; 
+  --main-cyan: #00ffb2; 
+  --main-magenta: #ff00d6; 
+  --main-yellow: #ffd900; 
+  --gradient-white: linear-gradient(1deg, #ffffff 0%, #ffffff 46.15%, #ffffff 100%); 
+  --transparent-black-80: #0d0d0d; 
+  --transparent-black-60: #0d0d0d; 
+  --agrandir-default: 300 1rem/1.5 PP Agrandir Variable;
+  --agrandir-16px-bold: 700 1rem/1.5 PP Agrandir Variable; 
+  --agrandir-20px-light: 300 1.25rem/1.5 PP Agrandir Variable; 
+  --agrandir-20px-medium: 500 1.25rem/1.5 PP Agrandir Variable; 
+  --agrandir-20px-bold: 700 1.25rem/1.5 PP Agrandir Variable; 
+  --agrandir-20px-regular: 400 1.25rem/1.5 PP Agrandir Variable; 
+  --agrandir-25px-light: 300 1.5625rem/1.2 PP Agrandir Variable; 
+  --agrandir-25px-medium: 500 1.5625rem/1.2 PP Agrandir Variable; 
+  --agrandir-25px-bold: 700 1.5625rem/1.2 PP Agrandir Variable;
+  --agrandir-31px-bold: 700 1.9375rem/1.2 PP Agrandir Variable;
+  --exo-16px-medium: 500 1rem/1.5 Exo;
+  --exo-16px-medium-maj: 500 1rem/1.5 Exo;
+  --exo-20px-medium-maj: 500 1.25rem/1.5 Exo; 
+  --exo-20px-bold: 700 1.25rem/1.5 Exo;
+  --exo-31px-medium: 500 1.9375rem/1.2 Exo;
+  --exo-31px-medium-maj: 500 1.9375rem/1.2 Exo;
+  --exo-39px-medium-maj: 500 2.4375rem/1.2 Exo;
+  --exo-48px-medium-maj: 500 3rem/1.2 Exo;
+  --exo-61px-medium: 500 3.8125rem/1.2 Exo;
+  --exo-61px-medium-maj: 500 3.8125rem/1.2 Exo; 
+  --icons-16px-regular: 400 1rem Font Awesome 6 Free; 
+  --icons-20px-regular: 400 1.25rem Font Awesome 6 Free; 
+  --icons-16px-solid: solid 1rem Font Awesome 6 Free; 
+  --icons-20px-solid: solid 1.25rem Font Awesome 6 Free; 
+}
+
+*{
+  padding: 0;
+  margin: 0;
+}
+
+ul{
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+  color: var(--c-txt);
+}
+
+body{
+  font: var(--agrandir-default);
+  background-color: var(--grey-1000);
+  color: var(--c-txt);
+  line-height: 1.5;
+}
+
+.title{
+  letter-spacing: .4rem;
+  text-transform: uppercase;
+  text-align: center;
+
+  &__huge{
+    font: var(--exo-31px-medium-maj);
+    line-height: 1.5;
+  }
+
+  &--block{
+    display: block;
+  }
+
+  &--medium{
+    font: var(--exo-20px-medium-maj);
+    letter-spacing: .2rem;
+  }
+
+  &--small{
+    letter-spacing: normal;
+    font: var(--agrandir-25px-bold);
+    text-transform: none;
+    text-align: left;
+  }
+
+  &--light{
+    font: var(--agrandir-25px-light);
+    letter-spacing: normal;
+    text-transform: none;
+
+  }
+}
+
+.logo{
+  background-image: url(logo.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 178px;
+  height: 118px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  margin: 16px auto 0 auto;
+
+  &__txt{
+    width: 100%;
+    position: absolute;
+    white-space: nowrap;
+    text-indent: 100%;
+  }
+
+  &--smaller{
+    width: 120px;
+    height: 80px;
+  }
+}
+
+.mainContent{
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 96px;
+
+
+  &--centered{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &__sub{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &--diamondBg{
+    background-image: url(background-diamond.svg);
+    background-size: contain;
+    background-position: center;
+  }
+
+  &--onlySpace{
+    padding: 0;
+    display: block;
+  }
+}
+
+.section{
+
+  &--full{
+    height: 100vh;
+  }
+
+  &--top{
+    background: linear-gradient(360deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 46.15%), linear-gradient(90deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 19.58%, rgba(13, 13, 13, 0) 88.33%, #0D0D0D 100%), url(illutlmnd.png);
+    background-position: center;
+    background-size: cover;
+
+    @media (-webkit-min-device-pixel-ratio: 2){ 
+        background: linear-gradient(360deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 46.15%), linear-gradient(90deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 19.58%, rgba(13, 13, 13, 0) 88.33%, #0D0D0D 100%), url(illutlmnd@2x.png);
+    }
+    
+  }
+
+  &--bottom{
+    background-image: url(plexus.svg);
+    background-repeat: no-repeat;
+    background-size: 120%;
+    background-position: center 70%;
+  }
+}
+
+.text{
+
+  &--highlighted{
+    font: var(--agrandir-20px-bold);
+  }
+
+  &--big{
+    font: var(--agrandir-20px-light);
+  }
+
+}
+
+.vote{
+  position: relative;
+
+  &__img{
+    width: 100%;
+  }
+
+  &__result{
+    position: absolute;
+    padding: 8px 16px;
+    background-color: var(--c-txt);
+    color: var(--grey-1000);
+    bottom: 16px;
+    font: var(--exo-20px-medium-maj);
+
+    &--winner{
+      right: 0;
+      transform: scale(1.5);
+    }
+
+  }
+  
+
+  &__name{
+    font:var(--agrandir-default);
+  }
+
+}
+
+video{
+  background-color: var(--grey-600);
+  margin-top: 128px;
+}
