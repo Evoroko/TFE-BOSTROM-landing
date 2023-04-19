@@ -1,8 +1,8 @@
 <template>
-    <div class="chara">
-        <div class="chara__info">
-            <h3 class="chara__name title title--medium">{{ name }}</h3>
-            <p class="chara__description">{{ description }}</p>
+    <li class="chara">
+        <div class="chara__info grid">
+            <h3 class="chara__name title title--medium grid-start-02 grid-end">{{ name }}</h3>
+            <p class="chara__description grid-start-02 grid-end-07">{{ description }}</p>
         </div>
 
         <div class="chara__img">
@@ -16,7 +16,7 @@
         <div class="chara__bg" :style="{'--bg-img': 'url(/characters/' + image + '.png)', '--bg-img-retina': 'url(/characters/' + image + '@2x.png)'}"></div>
 
         
-    </div>
+    </li>
 </template>
 
 
@@ -52,7 +52,18 @@ const props = defineProps({
     margin-top: 32px;
     display: none;
     overflow: hidden;
-    
+
+    @media(min-width: 992px){
+        justify-content: center;
+        height: 100%;
+        margin-top: 64px;
+
+        &__container{
+            height: 100%;
+        }
+    }
+
+
 
     &--active{
         display: flex;
@@ -65,6 +76,10 @@ const props = defineProps({
         bottom: 0;
         z-index: -5;
         animation: slideSide 0.3s ease-out;
+
+        @media(min-width: 992px){
+            right: 96px;
+        }
         
         img{
             height: 100%;
@@ -78,16 +93,24 @@ const props = defineProps({
         background-size: 180%;
         background-position: -200px top;
         background-repeat: no-repeat;
-
         @media (-webkit-min-device-pixel-ratio: 2){ 
             background-image: var(--bg-img-retina);
         }
-
         width: 100%;
         height: 100%;
         z-index: -6;
         
         animation: slideUp 1s ease-out;
+
+        @media (min-width: 992px){
+            background: linear-gradient(180deg, rgba(13, 13, 13, 0) 0%, #0D0D0D 100%), var(--bg-img);
+            background-size: 100%;
+            background-position: center top;
+
+            @media (-webkit-min-device-pixel-ratio: 2){ 
+                background-image: var(--bg-img-retina);
+            }
+        }
     }
 
     &__info{
@@ -106,6 +129,14 @@ const props = defineProps({
             height: 48px;
             width: 100%;
             background: linear-gradient(180deg, rgba(13,13,13,0) 0%, rgba(13,13,13,0.8) 100%);
+        }
+
+        @media (min-width: 992px){
+            background: none;
+
+            &::before{
+                background: none;
+            }
         }
     }
 

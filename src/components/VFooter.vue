@@ -1,13 +1,16 @@
 <template>
-    <footer class="footer">
-        <p>
-            <span class="logo logo--smaller"><span class="logo__txt">BOSTROM</span></span>
-            <small class="footer__copyright">© Nell Maissin&nbsp;—&nbsp;2023</small>
-        </p>
-        <ul class="otherLinks">
-            <li class="otherLinks__link"><a href="#">Crédits</a></li>
-            <li class="otherLinks__link"><a href="#">Case Study</a></li>
-        </ul>
+    <footer class="footer__container">
+        <div class="footer">
+            <p class="footer__info">
+                <span class="logo logo--smaller"><span class="logo__txt">BOSTROM</span></span>
+                <small class="footer__copyright">© Nell Maissin&nbsp;—&nbsp;2023</small>
+            </p>
+            <ul class="otherLinks">
+                <li class="otherLinks__link"><a href="#">Crédits</a></li>
+                <li class="otherLinks__link"><a href="#">Case Study</a></li>
+            </ul>
+        </div>
+
         
     </footer>
 </template>
@@ -20,17 +23,42 @@
 <style lang="scss">
 
 .footer{
-    background-color: var(--grey-black);
-    padding: 32px 16px 64px 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 32px;
+    max-width: 1200px;
+    margin: auto;
+
+    @media(min-width: 992px){
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__container{
+        background-color: var(--grey-black);
+        padding: 32px 16px 64px 16px;
+
+        @media(min-width: 992px){
+            padding: 16px 32px;
+        }
+    }
 
     &__copyright{
         display: block;
         margin-top: 16px;
         font: var(--agrandir-default);
+        @media(min-width: 992px){
+            margin-top: 0;
+        }
+    }
+
+    @media(min-width: 992px){
+        &__info{
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
     }
 }
 

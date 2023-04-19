@@ -6,29 +6,36 @@
                 <rect class="burgerBtn__line burgerBtn__line--mid" width="16" height="2" x="0" y="6"></rect>
                 <rect class="burgerBtn__line burgerBtn__line--bot" width="16" height="2" x="0" y="12"></rect>
             </svg>
-            <!-- <small class="burgerBtn__txt">Menu</small> -->
+            <small class="burgerBtn__txt">Menu</small>
         </button>
         <nav v-if="isBurgerOpen" class="menu">
-            <ul class="menu__linksContainer">
-                <li class="menu__link"><a href="#" class="menu__link--anim">Teaser</a></li>
-                <li class="menu__link"><a href="#" class="menu__link--anim">Histoire</a></li>
-                <li class="menu__link"><a href="#" class="menu__link--anim">Personnages</a></li>
-                <li class="menu__link"><a href="#" class="menu__link--anim">Gameplay</a></li>
-                <li class="menu__link"><a href="#" class="menu__link--anim">Vote</a></li>
-            </ul>
-            <a href="#" class="menu__link--anim">
-                <VButton>Jouer</VButton>
-            </a>
+            <div class="menu__container">
+                <div class="menu__main">
+                    <img class="menu__logo" src="/logo.svg" alt="Logo de BOSTROM.">
+                    <ul class="menu__linksContainer">
+                        <li class="menu__link"><a href="#" class="menu__link--anim">Teaser</a></li>
+                        <li class="menu__link"><a href="#" class="menu__link--anim">Histoire</a></li>
+                        <li class="menu__link"><a href="#" class="menu__link--anim">Personnages</a></li>
+                        <li class="menu__link"><a href="#" class="menu__link--anim">Gameplay</a></li>
+                        <li class="menu__link"><a href="#" class="menu__link--anim">Vote</a></li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="menu__link--anim menu__secondary">
+                    <VButton>Jouer</VButton>
+                </a>
+            </div>
+            
         </nav>
     </header>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import VButton from './VButton.vue';
 import gsap from 'gsap';
 
-const isBurgerOpen = ref(false);
+const isBurgerOpen = ref(true);
 
 const toggleMenu = () => {
     if(isBurgerOpen.value == true){
@@ -52,6 +59,26 @@ const toggleMenu = () => {
     }
 }
 
+onMounted(() => {
+    if(window.innerWidth < 992){
+        isBurgerOpen.value = false;
+    }else{
+        const menu = document.querySelector('.menu');
+        let lastScrollPos = 0;
+        document.addEventListener('scroll', (e) => {
+            let currentScroll = window.scrollY;
+            if(currentScroll > lastScrollPos){
+                menu.classList.add('menu--hidden');
+            }else{
+                menu.classList.remove('menu--hidden')
+            }
+            lastScrollPos = currentScroll;
+        })
+    }
+
+   
+})
+
 </script>
 
 <style lang="scss">
@@ -73,6 +100,10 @@ const toggleMenu = () => {
     z-index: 101;
     transition: .2s;
     cursor: pointer;
+
+    @media (min-width: 992px){
+        display: none;
+    }
 
     &--svg{
         transform: rotate(-45deg);
@@ -118,24 +149,49 @@ const toggleMenu = () => {
 
 .menu{
     width: 100%;
-    height: 100vh;
     position: fixed;
     z-index: 100;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     background-color: var(--grey-1000);
-    gap: 32px;
     animation-name: slidein;
     animation-duration: .3s;
+    height: 100vh;
+    transition: .2s;
+
+    @media (min-width: 992px){
+        height: 64px;
+        animation: none;
+    }
+
+    &__container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 32px;
+        height: 100vh;
+
+        @media (min-width: 992px){
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 32px;
+            box-sizing: border-box;
+            height: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+    }
 
     &__linksContainer{
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 32px;
+
+        @media (min-width: 992px){
+            height: 32px;
+            flex-direction: row;
+        }
     }
 
     &__link{
@@ -148,6 +204,13 @@ const toggleMenu = () => {
         padding-bottom: 16px;
         width: 270px;
         transition: .1s;
+
+        @media (min-width: 992px){
+            font: var(--exo-16px-medium-maj);
+            padding-bottom: 0;
+            border: none;
+            width: auto;
+        }
 
         &:active{
 
@@ -164,6 +227,37 @@ const toggleMenu = () => {
     &--closingAnim{
         animation-name: slideout;
         animation-duration: .3s;
+    }
+
+    &__logo{
+        display: none;
+
+        @media (min-width: 992px){
+            display: block;
+            width: 64px;
+        }
+    }
+
+    &__main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 48px;
+
+        
+        @media (min-width: 992px){
+            flex-direction: row;
+        }
+    }
+
+    &__secondary{
+        @media (min-width: 992px){
+            margin-right: 40px;
+        }
+    }
+
+    &--hidden{
+        transform: translateY(-100%);
     }
 }
 

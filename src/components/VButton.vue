@@ -1,10 +1,10 @@
 <template>
-    <button class="button">
+    <span class="button">
         <span class="button__txt">
             <slot/>
 
         </span>
-    </button>
+    </span>
 </template>
 
 <script setup>

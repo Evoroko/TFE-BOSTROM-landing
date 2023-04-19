@@ -21,6 +21,7 @@ const props = defineProps({
 .icon{
 
     &__content{
+        cursor: pointer;
         width: 64px;
         height: 64px;
         background-color: var(--grey-black);
@@ -29,6 +30,11 @@ const props = defineProps({
         margin-top: 13px;
         position: relative;
         overflow: hidden;
+
+        @media(min-width: 992px){
+            width: 72px;
+            height: 72px;
+        }
 
         &::before{
             content: "";
