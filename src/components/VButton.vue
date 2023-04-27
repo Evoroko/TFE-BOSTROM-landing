@@ -1,5 +1,5 @@
 <template>
-    <span class="button">
+    <span class="button" :class="{ 'button--small': size == 'small',  'button--smaller': size == 'smaller',}">
         <span class="button__txt">
             <slot/>
 
@@ -8,6 +8,13 @@
 </template>
 
 <script setup>
+
+const props = defineProps({
+    size: {
+        type: String,
+        required: false
+    }
+});
 
 </script>
 
@@ -23,7 +30,6 @@
     width: max-content;
     background-color: transparent;
     box-sizing: border-box;
-    transition: .2s;
     cursor: pointer;
 
     &:hover{
@@ -58,6 +64,57 @@
             left: auto;
             right: -16px;
         }
+    }
+
+    &--small{
+        font: var(--exo-16px-medium-maj);
+
+        .button__txt{
+            padding: 8px 12px;
+
+            &::after, &::before{
+                left: -14px;
+                top: 6px;
+                width: 28px;
+                height: 28px;
+                transform: rotate(45deg);
+                background-color: var(--c-txt);
+                z-index: -1;
+            }
+
+            &::after{
+                left: auto;
+                right: -14px;
+            }
+        }
+    }
+
+    &--smaller{
+
+        @media(min-width: 992px){
+            font: var(--exo-13px-medium);
+            letter-spacing: .15rem;
+
+            .button__txt{
+                padding: 8px 12px;
+
+                &::after, &::before{
+                    left: -12px;
+                    top: 5.4px;
+                    width: 24.5px;
+                    height: 24.5px;
+                    transform: rotate(45deg);
+                    background-color: var(--c-txt);
+                    z-index: -1;
+                }
+
+                &::after{
+                    left: auto;
+                    right: -12px;
+                }
+            }
+        }
+
     }
 }
 

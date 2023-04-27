@@ -35,6 +35,7 @@
   --agrandir-25px-medium: 500 1.5625rem/1.2 PP Agrandir Variable; 
   --agrandir-25px-bold: 700 1.5625rem/1.2 PP Agrandir Variable;
   --agrandir-31px-bold: 700 1.9375rem/1.2 PP Agrandir Variable;
+  --exo-13px-medium: 500 0.8rem/1.5 Exo;
   --exo-16px-medium: 500 1rem/1.5 Exo;
   --exo-16px-medium-maj: 500 1rem/1.5 Exo;
   --exo-20px-medium-maj: 500 1.25rem/1.5 Exo; 
@@ -54,6 +55,7 @@
 *{
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 ul{
@@ -100,6 +102,7 @@ body{
 
     @media(min-width: 992px){
       font: var(--exo-48px-medium-maj);
+      margin-bottom: 32px;
     }
   }
 
@@ -111,9 +114,13 @@ body{
   }
 
   &--light{
-    font: var(--agrandir-25px-light);
-    letter-spacing: normal;
-    text-transform: none;
+    font: var(--exo-20px-medium-maj);
+    letter-spacing: .25rem;
+    // letter-spacing: normal;
+    // text-transform: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
   }
 }
@@ -161,6 +168,24 @@ body{
     gap: 64px;
   }
 
+  &--top{
+    align-items: center;
+    text-align: center;
+    justify-content: flex-end;
+    padding-bottom: 64px;
+    box-sizing: border-box;
+    height: 100%;
+    gap: 24px;
+    max-width: 600px;
+    margin: auto;
+
+    @media (min-width: 992px){
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: 32px;
+    }
+  }
+
 
   &--centered{
     align-items: center;
@@ -180,7 +205,7 @@ body{
   &__sub{
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 48px;
 
     @media(min-width: 992px){
       display: grid;
@@ -188,10 +213,27 @@ body{
       grid-column-gap: 16px;
       max-width: 1200px;
       margin: auto;
+      
     }
 
     &--nogrid{
       display: flex;
+    }
+
+    &--space{
+      row-gap: 8px;
+
+      @media(min-width: 992px){
+        row-gap: 64px;
+      }
+
+      .text--centered{
+        margin-bottom: 32px;
+
+        @media(min-width: 992px){
+          margin-bottom: 0;
+        }
+      }
     }
   }
 
@@ -205,8 +247,8 @@ body{
 
     @media(min-width: 992px){
       background-size: cover;
-      padding-bottom: 128px;
-      padding-top: 128px;
+      padding-bottom: 192px;
+      padding-top: 96px;
     }
   }
 
@@ -218,6 +260,7 @@ body{
   @media(min-width: 992px){
     &--bottom{
       justify-content: center;
+      gap: 48px;
     }
   }
 }
@@ -235,17 +278,18 @@ body{
 }
 
 .section{
-  margin-bottom: 96px;
+  margin-bottom: 160px;
 
   @media(min-width: 992px){
+    padding-top: 128px;
     margin-bottom: 128px;
   }
 
   &__sub{
-    margin-bottom: 48px;
+    margin-bottom: 96px;
 
     @media(min-width: 992px){
-      margin-bottom: 96px;
+      margin-bottom: 192px;
     }
   }
 
@@ -254,14 +298,9 @@ body{
   }
 
   &--top{
-    background: linear-gradient(360deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 46.15%), linear-gradient(90deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 19.58%, rgba(13, 13, 13, 0) 88.33%, #0D0D0D 100%), url(/illutlmnd.png);
+    background: linear-gradient(360deg, #0D0D0D 0%, rgba(13, 13, 13, .8) 30%, rgba(13, 13, 13, 0) 60%), linear-gradient(90deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 19.58%, rgba(13, 13, 13, 0) 88.33%, #0D0D0D 100%);
     background-position: center;
-    background-size: cover;
-
-    @media (-webkit-min-device-pixel-ratio: 2){ 
-        background: linear-gradient(360deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 46.15%), linear-gradient(90deg, #0D0D0D 0%, rgba(13, 13, 13, 0) 19.58%, rgba(13, 13, 13, 0) 88.33%, #0D0D0D 100%), url(/illutlmnd@2x.png);
-    }
-    
+    background-size: cover;    
   }
 
   &--bottom{
@@ -275,12 +314,26 @@ body{
       background-size: contain;
     }
   }
+
+  &--diamondBg{
+    @media(min-width: 992px){
+      margin-bottom: 0;
+    }
+  }
 }
 
 .text{
 
   &--highlighted{
     font: var(--agrandir-20px-bold);
+    margin-top: 24px;
+
+    @media(min-width: 992px){
+      padding: 48px 0;
+      border-top: 1px solid var(--c-txt);
+      border-bottom: 1px solid var(--c-txt);
+    }
+
   }
 
   &--centered{
@@ -327,6 +380,46 @@ body{
 video{
   background-color: var(--grey-600);
   width: 100%;
+}
+
+
+.topBg{
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: -10;
+  background-image: url(/landing-prota.png);
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+
+  @media(min-width: 992px) and (max-height: 1200px){
+    background-size: contain;
+  }
+
+  &--bg{
+    background-size: cover;
+    background-image: url(/landing-bg.png);
+    z-index: -11;
+  }
+
+  &--hidden{
+    opacity: 0;
+  }
+}
+
+.bg{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 100vh;
+  z-index: -9;
+  background-color: var(--grey-1000);
+
+  &--fixed{
+    position: fixed;
+    top: 0;
+  }
 }
 
 

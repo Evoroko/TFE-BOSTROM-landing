@@ -8,21 +8,20 @@
             </svg>
             <small class="burgerBtn__txt">Menu</small>
         </button>
-        <nav v-if="isBurgerOpen" class="menu">
+        <nav v-if="isBurgerOpen" class="menu menu--hidden">
             <div class="menu__container">
                 <div class="menu__main">
-                    <img class="menu__logo" src="/logo.svg" alt="Logo de BOSTROM.">
+                    <img class="menu__logo" src="/logo_min.svg" alt="Logo de BOSTROM.">
                     <ul class="menu__linksContainer">
-                        <li class="menu__link"><a href="#" class="menu__link--anim">Teaser</a></li>
-                        <li class="menu__link"><a href="#" class="menu__link--anim">Histoire</a></li>
-                        <li class="menu__link"><a href="#" class="menu__link--anim">Personnages</a></li>
-                        <li class="menu__link"><a href="#" class="menu__link--anim">Gameplay</a></li>
-                        <li class="menu__link"><a href="#" class="menu__link--anim">Vote</a></li>
+                        <li class="menu__link menu__link--active" @click="toggleMenu"><a href="#section_0" class="menu__link--anim">Histoire</a></li>
+                        <li class="menu__link" @click="toggleMenu"><a href="#section_1" class="menu__link--anim">Personnages</a></li>
+                        <li class="menu__link" @click="toggleMenu"><a href="#section_2" class="menu__link--anim">Gameplay</a></li>
+                        <li class="menu__link" @click="toggleMenu"><a href="#section_3" class="menu__link--anim">Vote</a></li>
                     </ul>
                 </div>
                 
                 <a href="#" class="menu__link--anim menu__secondary">
-                    <VButton>Jouer</VButton>
+                    <VButton :size="'smaller'">Jouer</VButton>
                 </a>
             </div>
             
@@ -38,16 +37,19 @@ import gsap from 'gsap';
 const isBurgerOpen = ref(true);
 
 const toggleMenu = () => {
+    const burgerTxt = document.querySelector('.burgerBtn__txt');
     if(isBurgerOpen.value == true){
         const menu = document.querySelector('.menu');
         const burgerSvg = document.querySelector('.burgerBtn');
         menu.classList.add('menu--closingAnim');
         burgerSvg.classList.remove('burgerBtn--open');
+        burgerTxt.innerHTML = "Menu";
         menu.addEventListener("animationend", () => {
             isBurgerOpen.value = !isBurgerOpen.value
         })
     }else{
         isBurgerOpen.value = !isBurgerOpen.value
+        burgerTxt.innerHTML = "Fermer";
         setTimeout(() => {
             gsap.from(".menu__link--anim", {
                 opacity: 0,
@@ -59,26 +61,75 @@ const toggleMenu = () => {
     }
 }
 
+let lastScrollPos = 0;
+
 onMounted(() => {
+    const bg = document.querySelector('.bg');
+    const menu = document.querySelector('.menu');
+    const menuLinks = document.querySelectorAll('.menu__link');
+    const sections = document.querySelectorAll('.section');
+
+    // const toggleMenuScroll = () => {
+    //     let currentScroll = window.scrollY;
+    //     if(currentScroll > lastScrollPos){
+    //         menu.classList.add('menu--hidden');
+    //     }else{
+    //         menu.classList.remove('menu--hidden')
+    //     }
+    //     lastScrollPos = currentScroll;
+    // }
+
+    const currentlyActiveSection = ref(0);
+    let prevDisplay;
+
     if(window.innerWidth < 992){
         isBurgerOpen.value = false;
-    }else{
-        const menu = document.querySelector('.menu');
-        let lastScrollPos = 0;
-        document.addEventListener('scroll', (e) => {
-            let currentScroll = window.scrollY;
-            if(currentScroll > lastScrollPos){
-                menu.classList.add('menu--hidden');
+        document.addEventListener('scroll', () => {
+            if((sections[0].getBoundingClientRect().y - window.innerHeight / 10) <= 0){
+                bg.classList.add('bg--fixed')
             }else{
-                menu.classList.remove('menu--hidden')
+                bg.classList.remove('bg--fixed')
             }
-            lastScrollPos = currentScroll;
+        })
+    }else{
+        isBurgerOpen.value = true;
+        document.addEventListener('scroll', (e) => {
+            if((sections[0].getBoundingClientRect().y - window.innerHeight / 10) <= 0){
+                // toggleMenuScroll();
+                menu.classList.remove('menu--hidden');
+                bg.classList.add('bg--fixed')
+            }else{
+                menu.classList.add('menu--hidden');
+                bg.classList.remove('bg--fixed')
+            }
+
+            let currentPosSections = [];
+            for(let section of sections){
+                currentPosSections.push(section.getBoundingClientRect().y);
+            }
+
+            let allAboveNav = [];
+
+            for(let i = 0; i < sections.length; i++){
+                if(currentPosSections[i] <= 1){
+                    allAboveNav.push(sections[i].id);
+                }
+            }
+            if(allAboveNav[0] && prevDisplay !== allAboveNav[allAboveNav.length - 1]){
+                const displayedSection = allAboveNav[allAboveNav.length - 1]
+                const displayedSectionIndex = allAboveNav.length - 1;
+                prevDisplay = displayedSection;
+
+                for(let menuLink of menuLinks){
+                    menuLink.classList.remove('menu__link--active')
+                }
+
+                menuLinks[displayedSectionIndex].classList.add('menu__link--active');
+            }
+
         })
     }
-
-   
 })
-
 </script>
 
 <style lang="scss">
@@ -158,7 +209,7 @@ onMounted(() => {
     transition: .2s;
 
     @media (min-width: 992px){
-        height: 64px;
+        height: 48px;
         animation: none;
     }
 
@@ -170,6 +221,7 @@ onMounted(() => {
         text-align: center;
         gap: 32px;
         height: 100vh;
+        overflow: hidden;
 
         @media (min-width: 992px){
             flex-direction: row;
@@ -191,13 +243,14 @@ onMounted(() => {
         @media (min-width: 992px){
             height: 32px;
             flex-direction: row;
+            height: 100%;
         }
     }
 
     &__link{
         font: var(--exo-31px-medium-maj);
         text-transform: uppercase;
-        letter-spacing: .2rem;
+        letter-spacing: .15rem;
         overflow-y: hidden;
         width: 100%;
         border-bottom: 1px solid var(--c-txt);
@@ -206,10 +259,24 @@ onMounted(() => {
         transition: .1s;
 
         @media (min-width: 992px){
-            font: var(--exo-16px-medium-maj);
+            font: var(--exo-13px-medium);
             padding-bottom: 0;
             border: none;
             width: auto;
+            height: 100%;
+            border-top: 2px solid transparent;
+            border-bottom: 2px solid transparent;
+
+            a{
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            &--active{
+                border-bottom: 2px solid var(--c-txt);
+                box-sizing: border-box;
+            }
         }
 
         &:active{
@@ -234,7 +301,7 @@ onMounted(() => {
 
         @media (min-width: 992px){
             display: block;
-            width: 64px;
+            width: 160px;
         }
     }
 
@@ -246,7 +313,9 @@ onMounted(() => {
 
         
         @media (min-width: 992px){
+            gap: 64px;
             flex-direction: row;
+            height: 100%;
         }
     }
 
@@ -257,7 +326,9 @@ onMounted(() => {
     }
 
     &--hidden{
-        transform: translateY(-100%);
+        @media(min-width: 992px){
+            transform: translateY(-100%);
+        }
     }
 }
 

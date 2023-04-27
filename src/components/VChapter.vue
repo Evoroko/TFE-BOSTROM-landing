@@ -57,12 +57,13 @@ const props = defineProps({
     }
 
     @media (min-width: 992px){ 
-       flex-basis: calc(33% - 8px);
+        margin-bottom: 0;
     }
 
 
     &--playable{
-        border-left: 4px solid var(--c-txt);
+        // border-left: 4px solid var(--c-txt);
+        filter: drop-shadow(-2px -2px 0 var(--main-cyan)) drop-shadow(2px 2px 0 var(--main-magenta));
     }
 
     &__index{
