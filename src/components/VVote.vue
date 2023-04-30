@@ -104,7 +104,6 @@ const whichTab = () => {
     border-right: 1px solid var(--c-txt);
     display: none;
     height: 272px;
-    animation: slideUp .5s;
 
     &--toCome{
         align-items: center;
@@ -117,6 +116,7 @@ const whichTab = () => {
 
     @media(min-width: 992px){
         border: none;
+        animation: slideUp .5s;
     }
 
     &--active{
