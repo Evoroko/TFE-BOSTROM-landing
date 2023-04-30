@@ -1,6 +1,6 @@
 <template>
     <div class="icon">
-        <button class="icon__content"  :style="{'--bg-img': 'url(/characters/' + image + '.png)', '--bg-img-retina': 'url(/characters/' + image + '@2x.png)'}"></button>
+        <button class="icon__content"  :style="{'--bg-img': 'url(/assets/characters/icons/' + image + '.png)', '--bg-img-retina': 'url(/assets/characters/icons/' + image + '@2x.png)'}"></button>
     </div>
 
 </template>
@@ -38,14 +38,15 @@ const props = defineProps({
 
         &::before{
             content: "";
-            width: 300%;
-            height: 300%;
+            width: 140%;
+            height: 140%;
             display: block;
             position: absolute;
-            top: -64px;
+            top: -20%;
+            left: -20%;
             
             background-image: var(--bg-img);
-            background-size: cover;
+            background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
 

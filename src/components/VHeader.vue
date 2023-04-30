@@ -11,7 +11,7 @@
         <nav v-if="isBurgerOpen" class="menu menu--hidden">
             <div class="menu__container">
                 <div class="menu__main">
-                    <img class="menu__logo" src="/logo_min.svg" alt="Logo de BOSTROM.">
+                    <img class="menu__logo" src="/assets/logo_min.svg" alt="Logo de BOSTROM.">
                     <ul class="menu__linksContainer">
                         <li class="menu__link menu__link--active" @click="toggleMenu"><a href="#section_0" class="menu__link--anim">Histoire</a></li>
                         <li class="menu__link" @click="toggleMenu"><a href="#section_1" class="menu__link--anim">Personnages</a></li>
@@ -37,28 +37,31 @@ import gsap from 'gsap';
 const isBurgerOpen = ref(true);
 
 const toggleMenu = () => {
-    const burgerTxt = document.querySelector('.burgerBtn__txt');
-    if(isBurgerOpen.value == true){
-        const menu = document.querySelector('.menu');
-        const burgerSvg = document.querySelector('.burgerBtn');
-        menu.classList.add('menu--closingAnim');
-        burgerSvg.classList.remove('burgerBtn--open');
-        burgerTxt.innerHTML = "Menu";
-        menu.addEventListener("animationend", () => {
+    if(window.innerWidth < 992){
+        const burgerTxt = document.querySelector('.burgerBtn__txt');
+        if(isBurgerOpen.value == true){
+            const menu = document.querySelector('.menu');
+            const burgerSvg = document.querySelector('.burgerBtn');
+            menu.classList.add('menu--closingAnim');
+            burgerSvg.classList.remove('burgerBtn--open');
+            burgerTxt.innerHTML = "Menu";
+            menu.addEventListener("animationend", () => {
+                isBurgerOpen.value = !isBurgerOpen.value
+            })
+        }else{
             isBurgerOpen.value = !isBurgerOpen.value
-        })
-    }else{
-        isBurgerOpen.value = !isBurgerOpen.value
-        burgerTxt.innerHTML = "Fermer";
-        setTimeout(() => {
-            gsap.from(".menu__link--anim", {
-                opacity: 0,
-                y: 150,
-                stagger: 0.1
-            });
-        }, 1)
+            burgerTxt.innerHTML = "Fermer";
+            setTimeout(() => {
+                gsap.from(".menu__link--anim", {
+                    opacity: 0,
+                    y: 150,
+                    stagger: 0.1
+                });
+            }, 1)
 
+        }
     }
+
 }
 
 let lastScrollPos = 0;
@@ -68,16 +71,6 @@ onMounted(() => {
     const menu = document.querySelector('.menu');
     const menuLinks = document.querySelectorAll('.menu__link');
     const sections = document.querySelectorAll('.section');
-
-    // const toggleMenuScroll = () => {
-    //     let currentScroll = window.scrollY;
-    //     if(currentScroll > lastScrollPos){
-    //         menu.classList.add('menu--hidden');
-    //     }else{
-    //         menu.classList.remove('menu--hidden')
-    //     }
-    //     lastScrollPos = currentScroll;
-    // }
 
     const currentlyActiveSection = ref(0);
     let prevDisplay;
@@ -125,6 +118,13 @@ onMounted(() => {
                 }
 
                 menuLinks[displayedSectionIndex].classList.add('menu__link--active');
+            }
+
+            if(sections[sections.length - 1].getBoundingClientRect().bottom < 0 && prevDisplay){
+                for(let menuLink of menuLinks){
+                    menuLink.classList.remove('menu__link--active')
+                }
+                prevDisplay = undefined;
             }
 
         })

@@ -132,7 +132,7 @@ const nextIndex = (e) => {
             transform: rotate(-45deg);
             left: -40%;
             top: 10%;
-            background: linear-gradient(0deg, rgba(13, 13, 13, 0.4), rgba(13, 13, 13, 0.4)), url(/plexus.svg);
+            background: linear-gradient(0deg, rgba(13, 13, 13, 0.4), rgba(13, 13, 13, 0.4)), url(/assets/plexus.svg);
             background-size: contain;
             background-repeat: no-repeat;
             z-index: -11;
@@ -162,7 +162,7 @@ const nextIndex = (e) => {
         
 
         &--prev{
-            background-image: url(/arrow-left.svg);
+            background-image: url(/assets/arrow-left.svg);
             left: 16px;
 
             @media(min-width: 1328px){
@@ -171,7 +171,7 @@ const nextIndex = (e) => {
         }
 
         &--next{
-            background-image: url(/arrow-right.svg);
+            background-image: url(/assets/arrow-right.svg);
             right: 16px;
 
             @media(min-width: 1328px){

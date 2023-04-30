@@ -5,11 +5,22 @@ import VFooter from './components/VFooter.vue'
 import VChapter from './components/VChapter.vue'
 import VGameplay from './components/VGameplay.vue'
 import VSliderchara from './components/VSliderchara.vue'
+import VVote from './components/VVote.vue'
+import VCursor from './components/VCursor.vue'
 import { onMounted, ref } from 'vue'
+
+const isDesktop = ref(false);
+
+onMounted(() => {
+  if(window.innerWidth > 992){
+    isDesktop.value = true;
+  }
+})
 
 </script>
 
 <template>
+  <VCursor v-if="isDesktop"/>
   <VHeader/>
 
   <main>
@@ -31,7 +42,7 @@ import { onMounted, ref } from 'vue'
 
     <section class="section section--diamondBg mainContent--diamondBg" id="section_0">
       <div class="mainContent section__sub">
-        <video class="grid-start-03 grid-end-11" src=""></video>
+        <video class="video grid-start-03 grid-end-11" src=""></video>
       </div>
 
       <div class="mainContent section__sub">
@@ -58,7 +69,7 @@ import { onMounted, ref } from 'vue'
             :title="'«&nbsp;Le début de la fin&nbsp;»'"
             :available="'Disponible'"
             :playable="true"
-            :background="'placeholder'"
+            :background="'chap_prologue'"
           />
           <VChapter
             class="grid-start-05 grid-end-09"
@@ -66,7 +77,7 @@ import { onMounted, ref } from 'vue'
             :title="'«&nbsp;Président manichéen&nbsp;»'"
             :available="'Bientôt disponible — Vote en cours'"
             :playable="false"
-            :background="'placeholder'"
+            :background="'chap_1'"
           />
           <VChapter
             class="grid-start-09 grid-end"
@@ -74,7 +85,7 @@ import { onMounted, ref } from 'vue'
             :title="`???`"
             :available="`Plus d'informations à venir`"
             :playable="false"
-            :background="'placeholder'"
+            :background="'glitch'"
           />
           
         </div>
@@ -112,7 +123,7 @@ import { onMounted, ref } from 'vue'
     </section>
 
     <section class="section" id="section_3">
-      <div class="mainContent section__sub">
+      <div class="mainContent">
         <h2 class="title title__huge grid-start-01 grid-end">Vote</h2>
         <div class="mainContent__sub grid-start-01 grid-end text--centered">
           <p class="grid-start-04 grid-end-10">Votre avis sera requis à maintes reprises lors de la publication des différents chapitres de BOSTROM. Vos choix ont une importance et déterminent le déroulement du scénario&nbsp;—&nbsp;choisissez avec prudence.</p>
@@ -121,35 +132,16 @@ import { onMounted, ref } from 'vue'
       </div>
       
       
-      <div class="mainContent mainContent--centered grid">
-        <h3 class="title title--medium grid-start-01 grid-end">Résultat du vote préliminaire</h3>
-        <p class="text--big grid-start-04 grid-end-10">«&nbsp;Vous qui détenez le pouvoir d'influencer le cours de l'histoire, choisissez l'allié que vous souhaitez mettre en avant.&nbsp;»</p>
-        <div class="vote grid-start-05 grid-end-09">
-          <img
-            class="vote__img"
-            src="/vote.png"
-            srcset="/vote.png 1x, /vote@2x.png 2x"
-            alt="Image de résultat du vote préliminaire avec Roxy en position de vaincqueur à côté de Lio.">
-          <div class="vote__result vote__result--loser">
-            <h4 class="vote__name">Lio</h4>
-            <p>26,2%</p>
-          </div>
-          <div class="vote__result vote__result--winner">
-            <h4 class="vote__name">Roxy</h4>
-            <p>73,8%</p>
-          </div>
-        </div>
-
-      </div>
+      <VVote/>
       
     </section>
 
     <section class="section--full section--bottom">
       <div class="mainContent mainContent--centered mainContent--bottom">
-        <h2 class="title title--light">Découvrez l'univers de
-          <span class="logo"><span class="logo__txt">BOSTROM</span></span>
+        <h2 class="title title--light anim--bottom">Découvrez l'univers de
+          <span class="logo anim--bottom"><span class="logo__txt">BOSTROM</span></span>
         </h2>
-        <VButton :size="'medium'">Jouer</VButton>
+        <VButton :size="'medium'" class="anim--bottom">Jouer</VButton>
       </div>
       
     </section>

@@ -1,5 +1,5 @@
 <template>
-    <div class="chap" :class="{ 'chap--playable': playable }" :style="{'--bg-img': 'url(/' + background + '.png)', '--bg-img-retina': 'url(/' + background + '@2x.png)'}">
+    <div class="chap" :class="{ 'chap--playable': playable }" :style="{'--bg-img': 'url(/assets/' + background + '.webp)', '--bg-img-retina': 'url(/assets/' + background + '@2x.webp)'}">
         <div class="chap__name">
             <h3 class="chap__index">{{ index }}</h3>
             <h4 class="chap__title">{{ title }}</h4>

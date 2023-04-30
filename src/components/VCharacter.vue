@@ -2,18 +2,18 @@
     <li class="chara">
         <div class="chara__info grid">
             <h3 class="chara__name title title--medium grid-start-02 grid-end">{{ name }}</h3>
-            <p class="chara__description grid-start-02 grid-end-07">{{ description }}</p>
+            <p class="chara__description grid-start-02 grid-end-08">{{ description }}</p>
         </div>
 
         <div class="chara__img">
             <img
-                :src="'/characters/' + image + '.png'"
-                :srcset="'/characters/' + image + '.png 1x, /characters/'+ image + '@2x.png 2x'"
+                :src="'/assets/characters/' + image + '.webp'"
+                :srcset="'/assets/characters/' + image + '.webp 1x, /assets/characters/'+ image + '@2x.webp 2x'"
                 :alt="'Représentation dessinée de ' + name">
         </div>
 
         
-        <div class="chara__bg" :style="{'--bg-img': 'url(/characters/' + image + '.png)', '--bg-img-retina': 'url(/characters/' + image + '@2x.png)'}"></div>
+        <div class="chara__bg" :style="{'--bg-img': 'url(/assets/characters/' + image + '.webp)', '--bg-img-retina': 'url(/assets/characters/' + image + '@2x.webp)'}"></div>
 
         
     </li>
@@ -104,7 +104,7 @@ const props = defineProps({
 
         @media (min-width: 992px){
             background: linear-gradient(180deg, rgba(13, 13, 13, 0) 0%, #0D0D0D 100%), var(--bg-img);
-            background-size: 100%;
+            background-size: 80%;
             background-position: center top;
 
             @media (-webkit-min-device-pixel-ratio: 2){ 
