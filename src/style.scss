@@ -23,7 +23,7 @@
   --main-magenta: #ff00d6; 
   --main-yellow: #ffd900; 
   --gradient-white: linear-gradient(1deg, #ffffff 0%, #ffffff 46.15%, #ffffff 100%); 
-  --transparent-black-80: #0d0d0d; 
+  --transparent-black-80: #0d0d0dcd; 
   --transparent-black-60: #0d0d0d; 
   --agrandir-default: 300 1rem/1.5 PP Agrandir Variable;
   --agrandir-16px-bold: 700 1rem/1.5 PP Agrandir Variable; 
@@ -74,12 +74,22 @@ body{
   line-height: 1.5;
 }
 
+.link{
+  border-bottom: 1px solid var(--c-txt);
+  transition: .3s;
+
+  &:hover{
+    filter: drop-shadow(0 0 3px var(--c-txt));
+  }
+}
+
 .title{
   letter-spacing: .4rem;
   text-transform: uppercase;
   text-align: center;
+  color: var(--c-txt);
 
-  &__huge{
+  &--huge{
     font: var(--exo-31px-medium-maj);
     line-height: 1.5;
 

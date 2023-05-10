@@ -271,6 +271,11 @@ onMounted(() => {
                 height: 100%;
                 display: flex;
                 align-items: center;
+                transition: .3s;
+
+                &:hover{
+                    filter: drop-shadow(0 0 3px var(--c-txt));
+                }
             }
 
             &--active{

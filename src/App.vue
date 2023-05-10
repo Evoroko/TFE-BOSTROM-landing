@@ -46,7 +46,7 @@ onMounted(() => {
       </div>
 
       <div class="mainContent section__sub">
-        <h2 class="title title__huge title--slideAnim grid grid-start-01 grid-end">
+        <h2 class="title title--huge title--slideAnim grid grid-start-01 grid-end">
           <span class="title--block title--blockLeft grid-start-02 grid-end-08">Une histoire</span> 
           <span class="title--block title--blockRight grid-start-05 grid-end">dans un monde</span> 
           <span class="title--block title--blockLeft grid-start-03 grid-end-09">distordu…</span>
@@ -58,7 +58,7 @@ onMounted(() => {
       </div>
       
       <div class="mainContent">
-        <h2 class="title title__huge grid-start-01 grid-end">Chapitres parus</h2>
+        <h2 class="title title--huge grid-start-01 grid-end">Chapitres parus</h2>
 
         <div class="mainContent__sub mainContent__sub--space grid-start-01 grid-end">
           <p class="text--centered grid-start-04 grid-end-10">Chaque nouvelle publication contiendra un nouveau chapitre allant de 20 minutes à une heure de gameplay. L’intervalle de publication n’est pas défini et suivra le rythme de développement.</p>
@@ -94,12 +94,12 @@ onMounted(() => {
     
 
     <section class="section mainContent mainContent--onlySpace" id="section_1">
-      <h2 class="title title__huge">Personnages</h2>
+      <h2 class="title title--huge">Personnages</h2>
       <VSliderchara/>
     </section>
 
     <section class="section mainContent" id="section_2">
-      <h2 class="title title__huge grid-start-01 grid-end">Gameplay</h2>
+      <h2 class="title title--huge grid-start-01 grid-end">Gameplay</h2>
       <div class="mainContent__sub mainContent__sub--nogrid grid-start-01 grid-end">
           <VGameplay
           :title="'Un décor étrange'"
@@ -109,7 +109,7 @@ onMounted(() => {
         />
         <VGameplay
           :title="'Des objets à ramasser'"
-          :description="`Collectionnez tout ce qui pourrait vous être utile en interagissant avec le décor à l'aide de votre souris. Peut-être pourriez-vous en avoir besoin plus tard.`"
+          :description="`En interagissant avec le décor à l'aide de votre souris, collectionnez tout ce qui pourrait vous être utile, peut-être pourriez-vous en avoir besoin plus tard.`"
           :image="'02'"
           :image-alt="'Exemple d\'objet à inspecter et à ramasser.'"
         />
@@ -124,7 +124,7 @@ onMounted(() => {
 
     <section class="section" id="section_3">
       <div class="mainContent">
-        <h2 class="title title__huge grid-start-01 grid-end">Vote</h2>
+        <h2 class="title title--huge grid-start-01 grid-end">Vote</h2>
         <div class="mainContent__sub grid-start-01 grid-end text--centered">
           <p class="grid-start-04 grid-end-10">Votre avis sera requis à maintes reprises lors de la publication des différents chapitres de BOSTROM. Vos choix ont une importance et déterminent le déroulement du scénario&nbsp;—&nbsp;choisissez avec prudence.</p>
           <p class="text--highlighted grid-start-03 grid-end-11">Lorsque vous finissez un chapitre, si le vote est toujours en cours, vous pouvez voter pour le déroulement du prochain chapitre qui paraîtra.</p>

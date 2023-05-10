@@ -25,7 +25,7 @@
         </div>
 
         <div class="tabContent tabContent--toCome grid-start-05 grid-end">
-            <p>Jouez au prologue de BOSTROM pour influencer le futur chapitre 1.</p>
+            <p>Jouez au prologue de BOSTROM pour accéder au vote et influencer le futur chapitre 1.</p>
             <VButton>Jouer</VButton>
         </div>
 

@@ -1,5 +1,5 @@
 <template>
-    <span class="button" :class="{ 'button--small': size == 'small',  'button--smaller': size == 'smaller',}">
+    <span class="button" :class="{ 'button--small': size == 'small',  'button--smaller': size == 'smaller', 'button--miniature': miniature == true}">
         <span class="button__txt">
             <slot/>
 
@@ -12,6 +12,11 @@
 const props = defineProps({
     size: {
         type: String,
+        required: false
+    },
+    miniature: {
+        type: Boolean,
+        default: false,
         required: false
     }
 });
@@ -115,6 +120,22 @@ const props = defineProps({
             }
         }
 
+    }
+
+    &--miniature{
+        .button__txt{
+            width: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-indent: 3px;
+
+            &::after, &::before{
+                z-index: -2;
+            }
+        }
     }
 }
 

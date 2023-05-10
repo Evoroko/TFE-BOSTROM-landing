@@ -6,9 +6,12 @@
                 <small class="footer__copyright">© Nell Maissin&nbsp;—&nbsp;2023</small>
             </p>
             <ul class="otherLinks">
-                <li class="otherLinks__link"><a href="#">Crédits</a></li>
-                <li class="otherLinks__link"><a href="#">Case Study</a></li>
+                <li class="otherLinks__link"><a href="#" @click.prevent="openCredits = true">Crédits</a></li>
+                <li class="otherLinks__link"><a href="#" @click.prevent="openCS = true">Case Study</a></li>
             </ul>
+
+            <VCaseStudy :open="openCS" @close-modal="openCS = false"/>
+            <VCredits :open="openCredits" @close-modal="openCredits = false"/>
         </div>
 
         
@@ -16,7 +19,12 @@
 </template>
 
 <script setup>
+import VCaseStudy from './VCaseStudy.vue'
+import VCredits from './VCredits.vue'
+import { ref } from 'vue';
 
+const openCS = ref(false);
+const openCredits = ref(false);
 
 </script>
 
@@ -73,9 +81,14 @@
         letter-spacing: .2rem;
         padding-bottom: 4px;
         border-bottom: 1px solid var(--c-txt);
+        transition: .3s;
 
-        & a:active{
+        a:active{
             filter: drop-shadow(-2px -2px 0 var(--main-cyan)) drop-shadow(2px 2px 0 var(--main-magenta));
+        }
+
+        &:hover{
+            filter: drop-shadow(0 0 3px var(--c-txt));
         }
     }
 }
