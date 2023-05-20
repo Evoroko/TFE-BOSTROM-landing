@@ -4,7 +4,7 @@
             <div
                 class="gameplayPoint__txt"
                 :class="{'grid-start-08': image == '02', 'grid-end': image == '02', 'grid-start-01': image !== '02', 'grid-end-06': image !== '02'}"
-                :style="{'--bg-img': 'url(/assets/' + image + '.svg)'}"
+                :style="{'--bg-img': 'url(../assets/' + image + '.svg)'}"
             >
                 <h3 class="gameplayPoint__title title title--small">{{ title }}</h3>
                 <p class="gameplayPoint__description">{{ description }}</p>
@@ -12,8 +12,8 @@
             <img
                 class="gameplayPoint__img"
                 :class="{'grid-start-01': image == '02', 'grid-end-07': image == '02', 'grid-start-07': image !== '02', 'grid-end': image !== '02'}"
-                :src="'/assets/gameplay-' + image + '.webp'"
-                :srcset="'/assets/gameplay-' + image + '.webp 1x, /assets/gameplay-' + image + '@2x.webp 2x'"
+                :src="'./assets/gameplay-' + image + '.webp'"
+                :srcset="'./assets/gameplay-' + image + '.webp 1x, ./assets/gameplay-' + image + '@2x.webp 2x'"
                 :alt="imageAlt">
         </div>
     </div>

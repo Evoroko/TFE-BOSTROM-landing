@@ -28,7 +28,6 @@ const makeActive = (e) => {
 
         if(e.target == tabs[i]){
             whichTab.value = i;
-            // console.log(i);
         }
     }
     e.target.classList.add('tab--active');

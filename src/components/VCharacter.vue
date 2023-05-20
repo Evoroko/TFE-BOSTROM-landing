@@ -7,13 +7,13 @@
 
         <div class="chara__img">
             <img
-                :src="'/assets/characters/' + image + '.webp'"
-                :srcset="'/assets/characters/' + image + '.webp 1x, /assets/characters/'+ image + '@2x.webp 2x'"
+                :src="'./assets/characters/' + image + '.webp'"
+                :srcset="'./assets/characters/' + image + '.webp 1x, ' + './assets/characters/'+ image + '@2x.webp 2x'"
                 :alt="'Représentation dessinée de ' + name">
         </div>
 
         
-        <div class="chara__bg" :style="{'--bg-img': 'url(/assets/characters/' + image + '.webp)', '--bg-img-retina': 'url(/assets/characters/' + image + '@2x.webp)'}"></div>
+        <div class="chara__bg" :style="{'--bg-img': 'url(../assets/characters/' + image + '.webp)', '--bg-img-retina': 'url(../assets/characters/' + image + '@2x.webp)'}"></div>
 
         
     </li>
@@ -93,6 +93,7 @@ const props = defineProps({
         background-size: 180%;
         background-position: -200px top;
         background-repeat: no-repeat;
+        background-color: transparent;
         @media (-webkit-min-device-pixel-ratio: 2){ 
             background-image: var(--bg-img-retina);
         }

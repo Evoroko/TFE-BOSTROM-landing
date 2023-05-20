@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(CSSPlugin)
 gsap.from('.topBg--prota', {
     opacity: 0,
+    delay: 2.7,
     y: '20vh',
     duration: 1
 })
@@ -20,8 +21,9 @@ gsap.from('.topBg--prota', {
 gsap.from('.topBg--bg', {
     opacity: 0,
     duration: 1,
-    delay: .5,
-    scale: 1.1
+    delay: 3.2,
+    scale: 1.1,
+    filter:"blur(10px)"
 })
 
 gsap.to('.topBg--prota', {
@@ -34,25 +36,30 @@ gsap.to('.topBg--prota', {
     }
 })
 
-gsap.fromTo('.topBg--bg', {
-    scale: 1,
-    scrollTrigger: {
-        trigger: '.topBg',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-    }
-},{
-    scale: 1.2,
-    scrollTrigger: {
-        trigger: '.topBg',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: .2
-    }
-});
 
 if(window.innerWidth > 992){
+
+
+    gsap.fromTo('.topBg--bg', {
+        scale: 1,
+        filter:"blur(0px)",
+        scrollTrigger: {
+            trigger: '.topBg',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+        }
+    },{
+        scale: 1.2,
+        filter:"blur(10px)",
+        scrollTrigger: {
+            trigger: '.topBg',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: .2
+        }
+    });
+
     gsap.from('.title--blockLeft', {
         x: 200,
         scrollTrigger: {
@@ -72,6 +79,24 @@ if(window.innerWidth > 992){
             scrub: .2
         }
     })
+}else{
+    gsap.fromTo('.topBg--bg', {
+        scale: 1,
+        scrollTrigger: {
+            trigger: '.topBg',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+        }
+    },{
+        scale: 1.2,
+        scrollTrigger: {
+            trigger: '.topBg',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: .2
+        }
+    });
 }
 
 
@@ -156,7 +181,7 @@ for(let i = 0; i < gameplayPoints.length; i++){
 
 
 gsap.from('.topAnim', {
-    delay: .5,
+    delay: 3,
     y: 100,
     opacity: 0,
     stagger: .2
@@ -164,87 +189,7 @@ gsap.from('.topAnim', {
 
 
 
-const tlVote = gsap.timeline({
-    scrollTrigger: {
-        trigger: '.result',
-        start: 'middle bottom'
-    }
-});
 
-tlVote
-    .from('.result__percentage', {
-        onStart: () => {
-            risePercentage();
-            lowerPercentage();
-        },
-        x: 100,
-        duration: 2
-    })
-    .from('.result__winner .result__name', {
-        x: 200,
-        duration: 2
-    }, '<')
-    .from('.result__loser .result__name', {
-        x: 50,
-        duration: 2
-    }, '<')
-    .from('.result__winner .result__img', {
-        x: '20%',
-        duration: 1
-    }, '<')
-    .from('.result__loser .result__img', {
-        x: 20,
-        duration: 1
-    }, '<');
-
-const tabs = document.querySelectorAll('.tab');
-let currentActiveTab = 0;
-for(let i = 0; i < tabs.length; i++){
-    tabs[i].addEventListener('click', () => {
-        if(currentActiveTab !== i){
-            currentActiveTab = i;
-            percentageDefaultToWinner = 50;
-            percentageDefaultToLoser = 50;
-            tlVote.restart();
-        }
-
-    })
-}
-
-
-let percentageWinner = 73.8;
-let percentageLoser = 26.2;
-let percentageDefaultToWinner = 50;
-let percentageDefaultToLoser = 50;
-
-const percentageWinnerEl = document.querySelector('.result__winner .result__percentage');
-const percentageLoserEl = document.querySelector('.result__loser .result__percentage');
-
-
-function risePercentage() {
-    setTimeout(() => {
-        percentageDefaultToWinner += 0.8;
-        if(percentageDefaultToWinner < percentageWinner){
-            risePercentage();
-        }else{
-            percentageDefaultToWinner = percentageWinner;
-        }
-        percentageWinnerEl.innerHTML = (Math.round(percentageDefaultToWinner * 10) / 10) + '%';
-    }, 50)
-
-}
-
-function lowerPercentage() {
-    setTimeout(() => {
-        percentageDefaultToLoser -= 0.8;
-        if(percentageDefaultToLoser > percentageLoser){
-            lowerPercentage();
-        }else{
-            percentageDefaultToLoser = percentageLoser;
-        }
-        percentageLoserEl.innerHTML = (Math.round(percentageDefaultToLoser * 10) / 10) + '%';
-    }, 50)
-}
 
 
 gsap.from('.video', {
@@ -262,9 +207,30 @@ gsap.from('.anim--bottom', {
     stagger: .2,
     scrollTrigger: {
         trigger: '.section--bottom',
-        start: 'middle bottom'
+        start: '20% bottom'
     }
 })
+
+gsap.from('.mainContent__sub--vote', {
+    x: -100,
+    opacity: 0,
+    duration: 0.3,
+    scrollTrigger: {
+        trigger: '.mainContent__sub--vote',
+        start: '80% bottom'
+    }
+})
+
+gsap.from('.duration', {
+    x: 100,
+    opacity: 0,
+    duration: 1.2,
+    scrollTrigger: {
+        trigger: '.duration',
+        start: '80% bottom'
+    }
+})
+
 
 
 

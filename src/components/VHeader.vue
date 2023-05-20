@@ -14,13 +14,13 @@
                     <img class="menu__logo" src="/assets/logo_min.svg" alt="Logo de BOSTROM.">
                     <ul class="menu__linksContainer">
                         <li class="menu__link menu__link--active" @click="toggleMenu"><a href="#section_0" class="menu__link--anim">Histoire</a></li>
-                        <li class="menu__link" @click="toggleMenu"><a href="#section_1" class="menu__link--anim">Personnages</a></li>
-                        <li class="menu__link" @click="toggleMenu"><a href="#section_2" class="menu__link--anim">Gameplay</a></li>
-                        <li class="menu__link" @click="toggleMenu"><a href="#section_3" class="menu__link--anim">Vote</a></li>
+                        <li class="menu__link" @click="toggleMenu"><a href="#section_1" class="menu__link--anim">Impliquez-vous</a></li>
+                        <li class="menu__link" @click="toggleMenu"><a href="#section_2" class="menu__link--anim">Personnages</a></li>
+                        <li class="menu__link" @click="toggleMenu"><a href="#section_3" class="menu__link--anim">Gameplay</a></li>
                     </ul>
                 </div>
                 
-                <a href="#" class="menu__link--anim menu__secondary">
+                <a href="http://nell-maissin.be/projets/tfe/game/" class="menu__link--anim menu__secondary">
                     <VButton :size="'smaller'">Jouer</VButton>
                 </a>
             </div>

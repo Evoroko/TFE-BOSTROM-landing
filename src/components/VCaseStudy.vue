@@ -81,7 +81,7 @@ const closeModal = () => {
         flex-direction: column;
         justify-content: center;
         width: 80%;
-        height: 40%;
+        height: 90%;
         min-height: 400px;
         position: relative;
         gap: 24px;
@@ -90,6 +90,7 @@ const closeModal = () => {
         color: var(--c-txt);
 
         @media(min-width: 700px){
+            height: 40%;
             width: auto;
             height: auto;
             min-height: auto;

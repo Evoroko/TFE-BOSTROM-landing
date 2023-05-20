@@ -17,6 +17,22 @@
                         <li>Exo — Google Fonts</li>
                     </ul>
                 </div>
+                <div class="credits__el">
+                    <h3>Effets sonores</h3>
+                    <ul>
+                        <li>Objet obtenu — <a class="link" href="https://freesound.org/people/newlocknew/sounds/546970/">newlocknew sur Freesound</a></li>
+                        <li>Code correct — <a class="link" href="https://freesound.org/people/Eponn/sounds/619836/">Eponn sur Freesound</a></li>
+                        <li>Code incorrect — <a class="link" href="https://freesound.org/people/EminYILDIRIM/sounds/547250/">EminYILDIRIM sur Freesound</a></li>
+                        <li>Click — <a class="link" href="https://freesound.org/people/Luis0413/sounds/683048/">Luis0413 sur Freesound</a></li>
+                    </ul>
+                </div>
+                <div class="credits__el">
+                    <h3>Vidéos</h3>
+                    <ul>
+                        <li>Additional Footage Provided By <a class="link" rel="nofollow" href="https://www.videezy.com/abstract/53078-abstract-video-glitch-loop">Videezy</a></li>
+                        <li>Free Broll provided by <a class="link" target="_blank" href="https://www.videezy.com/backgrounds/44869-glitch-static-television">Videezy</a></li>
+                    </ul>
+                </div>
                 
             </div>
 

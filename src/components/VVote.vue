@@ -33,6 +33,8 @@
             <p>Vote à paraître lors de la publication du chapitre 1.</p>
 
         </div>
+        
+        <p class="text--highlighted grid-start-03 grid-end-11">Lorsque vous finissez un chapitre, si le vote est toujours en cours, vous pouvez voter pour le déroulement du prochain chapitre qui paraîtra.</p>
 
     </div>
     
@@ -41,7 +43,6 @@
 <script setup>
 import VVoteTab from './VVoteTab.vue';
 import VButton from './VButton.vue';
-import gsap from 'gsap';
 import { ref, onMounted } from 'vue';
 
 const activeTab = ref(0);
@@ -58,6 +59,7 @@ const whichTab = () => {
     }
     tabContents[activeTab.value].classList.add('tabContent--active')
 }
+
 
 
 
@@ -125,107 +127,5 @@ const whichTab = () => {
 }
 
 
-.result{
-    height: 128px;
-    overflow: hidden;
-    position: relative;
 
-    @media(min-width: 992px){
-        height: 240px;
-    }
-
-
-    &__img{
-        width: 200px;
-        position: absolute;
-        top: -16px;
-        z-index: -1;
-
-        @media(min-width: 992px){
-            width: 400px;
-        }
-    }
-
-    &__name{
-        rotate: 30deg;
-        display: block;
-        width: fit-content;
-        font: var(--exo-61px-medium-maj);
-        font-size: 80px;
-        text-transform: uppercase;
-        opacity: .2;
-        z-index: -3;
-
-        @media(min-width: 992px){
-            font-size: 160px;
-        }
-    }
-
-    &__percentage{
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 500px;
-        left: 20%;
-        bottom: -25%;
-        padding-top: 300px;
-        padding-bottom: 4px;
-        transform: rotate(60deg);
-        font: var(--exo-31px-medium-maj);
-        filter: drop-shadow(0 0 2px var(--grey-1000));
-
-        @media(min-width: 992px){
-            left: 30%;
-            bottom: -10%;
-        }
-    }
-
-    &__winner{
-
-        .result__img{
-            right: -64px;
-            filter: drop-shadow(-2px -2px 0 var(--main-cyan)) drop-shadow(2px 2px 0 var(--main-magenta));
-
-            @media(min-width: 992px){
-                top: -32px;
-            }
-        }
-
-        .result__name{
-            position: absolute;
-            top: 0;
-            left: 40%;
-        }
-
-        .result__percentage{
-            background: linear-gradient(0deg, #ffffff31 0%, rgba(255, 255, 255, 0) 76.52%);
-        }
-    }
-
-    &__loser{
-
-        .result__img{
-            left: -48px;
-            filter: brightness(50%);
-        }
-
-        .result__name{
-            position: absolute;
-            top: 0;
-            left: 10%;
-        }
-
-        .result__percentage{
-            left: calc(-40px + 20%);
-            bottom: -30%;
-            font: var(--exo-20px-medium-maj);
-
-            @media(min-width: 992px){
-                left: calc(0px + 24%);
-                bottom: -16%;
-            }
-        }
-    }
-}
 </style>

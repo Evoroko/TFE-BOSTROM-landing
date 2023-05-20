@@ -1,6 +1,6 @@
 <template>
     <div class="icon">
-        <button class="icon__content"  :style="{'--bg-img': 'url(/assets/characters/icons/' + image + '.png)', '--bg-img-retina': 'url(/assets/characters/icons/' + image + '@2x.png)'}"></button>
+        <button class="icon__content"  :style="{'--bg-img': 'url(../assets/characters/icons/' + image + '.png)', '--bg-img-retina': 'url(../assets/characters/icons/' + image + '@2x.png)'}"></button>
     </div>
 
 </template>
@@ -19,6 +19,10 @@ const props = defineProps({
 <style lang="scss">
 
 .icon{
+
+    &:hover{
+        filter: drop-shadow(0px -2px 0 var(--main-cyan)) drop-shadow(0px 2px 0 var(--main-magenta));
+    }
 
     &__content{
         cursor: pointer;

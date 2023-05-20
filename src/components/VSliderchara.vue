@@ -135,7 +135,8 @@ const nextIndex = (e) => {
             background: linear-gradient(0deg, rgba(13, 13, 13, 0.4), rgba(13, 13, 13, 0.4)), url(/assets/plexus.svg);
             background-size: contain;
             background-repeat: no-repeat;
-            z-index: -11;
+            z-index: -3;
+            mix-blend-mode: lighten;
         }
     }
 
